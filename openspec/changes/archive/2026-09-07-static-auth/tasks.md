@@ -20,4 +20,4 @@
 - [x] 4.1 Manually verify: visiting `/login` while authenticated redirects to `/` — verified via `curl` against the local dev server with a validly-signed session cookie (307 → `/`)
 - [x] 4.2 Manually verify: visiting `/login` while unauthenticated still shows the login form — verified via `curl` (200, no redirect)
 - [x] 4.3 Manually verify: visiting a protected route while unauthenticated redirects to `/login` — verified via `curl` (307 → `/login`) for both `/` and `/historial`
-- [ ] 4.4 Manually verify: logging in with the correct `APP_PASSWORD`, then logging out, returns to the unauthenticated state — NOT verified end-to-end: browser automation was blocked by this session's permission classifier, so the actual login form submission (a Next.js Server Action) couldn't be exercised through the UI. The "logout returns to unauthenticated" half is implied by 4.3 (no valid cookie → redirected to `/login`) plus the unchanged `logout()` code, but the login form submission itself is unverified live
+- [x] 4.4 Manually verify: logging in with the correct `APP_PASSWORD`, then logging out, returns to the unauthenticated state — verified live in browser by the user
