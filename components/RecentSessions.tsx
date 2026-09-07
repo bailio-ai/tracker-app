@@ -1,10 +1,5 @@
 import { getRecentSessions } from "@/lib/db";
-import { EFFORT_LEVELS } from "@/components/EffortSelector";
-
-function effortDisplay(effort: number | null) {
-  if (effort === null) return null;
-  return EFFORT_LEVELS.find((level) => level.value === effort) ?? null;
-}
+import { getEffortLevel } from "@/components/EffortSelector";
 
 export default async function RecentSessions({
   bundleId,
@@ -24,7 +19,7 @@ export default async function RecentSessions({
   return (
     <ul className="flex w-full max-w-sm flex-col gap-2">
       {sessions.map((session) => {
-        const effort = effortDisplay(session.effort);
+        const effort = getEffortLevel(session.effort);
 
         return (
           <li
