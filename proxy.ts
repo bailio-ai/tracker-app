@@ -4,14 +4,20 @@ import { SESSION_COOKIE, isValidSessionToken } from "@/lib/session";
 
 export function proxy(request: NextRequest) {
   const token = request.cookies.get(SESSION_COOKIE)?.value;
+  const isAuthenticated = isValidSessionToken(token);
+  const isLoginPage = request.nextUrl.pathname === "/login";
 
-  if (!isValidSessionToken(token)) {
+  if (isAuthenticated && isLoginPage) {
+    return NextResponse.redirect(new URL("/", request.url));
+  }
+
+  if (!isAuthenticated && !isLoginPage) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 }
 
 export const config = {
   matcher: [
-    "/((?!login|_next/static|_next/image|favicon.ico|manifest.webmanifest|icons).*)",
+    "/((?!_next/static|_next/image|favicon.ico|manifest.webmanifest|icons).*)",
   ],
 };
