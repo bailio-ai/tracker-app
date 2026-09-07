@@ -6,6 +6,11 @@ export const EFFORT_LEVELS = [
   { value: 5, emoji: "🥵", color: "bg-red-500", className: "has-[:checked]:bg-red-500 has-[:checked]:text-white" },
 ] as const;
 
+export function getEffortLevel(effort: number | null) {
+  if (effort === null) return null;
+  return EFFORT_LEVELS.find((level) => level.value === effort) ?? null;
+}
+
 export default function EffortSelector() {
   return (
     <div className="flex items-center gap-2">
