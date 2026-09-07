@@ -1,4 +1,5 @@
-import { createNewBundle, getRemainingSessions, logSession } from "@/app/actions";
+import { createNewBundle, getRemainingSessions } from "@/app/actions";
+import SessionForm from "@/components/SessionForm";
 
 export const dynamic = "force-dynamic";
 
@@ -17,34 +18,7 @@ export default async function HomePage() {
               / {state.totalSessions}
             </span>
           </p>
-          <form
-            action={logSession}
-            className="flex flex-col items-center gap-3"
-          >
-            <select
-              name="effort"
-              defaultValue="3"
-              className="rounded-lg border border-black/10 bg-transparent px-3 py-2 text-center dark:border-white/10"
-            >
-              {[1, 2, 3, 4, 5].map((value) => (
-                <option key={value} value={value}>
-                  Esfuerzo: {value}
-                </option>
-              ))}
-            </select>
-            <input
-              type="text"
-              name="note"
-              placeholder="Nota (opcional)"
-              className="w-64 rounded-lg border border-black/10 bg-transparent px-3 py-2 text-center dark:border-white/10"
-            />
-            <button
-              type="submit"
-              className="rounded-full bg-black px-8 py-3 font-medium text-white dark:bg-white dark:text-black"
-            >
-              Registrar entreno
-            </button>
-          </form>
+          <SessionForm />
         </>
       ) : (
         <>
