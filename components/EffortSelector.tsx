@@ -1,9 +1,9 @@
-const EFFORT_LEVELS = [
-  { value: 1, emoji: "😄", className: "has-[:checked]:bg-green-500 has-[:checked]:text-white" },
-  { value: 2, emoji: "🙂", className: "has-[:checked]:bg-lime-500 has-[:checked]:text-white" },
-  { value: 3, emoji: "😐", className: "has-[:checked]:bg-yellow-500 has-[:checked]:text-white" },
-  { value: 4, emoji: "😣", className: "has-[:checked]:bg-orange-500 has-[:checked]:text-white" },
-  { value: 5, emoji: "🥵", className: "has-[:checked]:bg-red-500 has-[:checked]:text-white" },
+export const EFFORT_LEVELS = [
+  { value: 1, emoji: "😄", color: "bg-green-500", className: "has-[:checked]:bg-green-500 has-[:checked]:text-white" },
+  { value: 2, emoji: "🙂", color: "bg-lime-500", className: "has-[:checked]:bg-lime-500 has-[:checked]:text-white" },
+  { value: 3, emoji: "😐", color: "bg-yellow-500", className: "has-[:checked]:bg-yellow-500 has-[:checked]:text-white" },
+  { value: 4, emoji: "😣", color: "bg-orange-500", className: "has-[:checked]:bg-orange-500 has-[:checked]:text-white" },
+  { value: 5, emoji: "🥵", color: "bg-red-500", className: "has-[:checked]:bg-red-500 has-[:checked]:text-white" },
 ] as const;
 
 export default function EffortSelector() {

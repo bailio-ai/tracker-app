@@ -1,5 +1,6 @@
 import { createNewBundle, getRemainingSessions } from "@/app/actions";
 import SessionForm from "@/components/SessionForm";
+import RecentSessions from "@/components/RecentSessions";
 
 export const dynamic = "force-dynamic";
 
@@ -18,6 +19,7 @@ export default async function HomePage() {
               / {state.totalSessions}
             </span>
           </p>
+          <RecentSessions bundleId={state.bundleId} />
           <SessionForm />
         </>
       ) : (
