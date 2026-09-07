@@ -98,6 +98,20 @@ export async function createSession(params: {
   return rows[0];
 }
 
+export async function getRecentSessions(
+  bundleId: number,
+  limit = 5,
+): Promise<Session[]> {
+  const { rows } = await query<Session>(
+    `select * from sessions
+     where bundle_id = $1
+     order by session_date desc, id desc
+     limit $2`,
+    [bundleId, limit],
+  );
+  return rows;
+}
+
 export async function countSessionsForBundle(
   bundleId: number,
 ): Promise<number> {
